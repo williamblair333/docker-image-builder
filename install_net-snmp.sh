@@ -17,19 +17,20 @@ set -eu -o pipefail
 #
 #################################################################################
 
-user=remote
-user_snmp_home=home/"$user"/.snmp
+#user=remote
+#user_snmp_home=home/"$user"/.snmp
 
 # set non-free in /etc/apt/sources.list
-apt-get update
-apt-get --yes install snmp snmp-mibs-downloader tkmib smitools
+sudo apt-get update
+sudo apt-get --yes install snmp snmp-mibs-downloader tkmib smitools
  
-sed -i 's/mibs :/#mibs :/g' /etc/snmp/snmp.conf
+sudo sed -i 's/mibs :/#mibs :/g' /etc/snmp/snmp.conf
  
 #switch to your favorite user account
 
-mkdir -p /"$user_snmp_home"/mibs && cd /"$user_snmp_home"/mibs
-echo "mibdirs +"/"$user_snmp_home""/Source" >> /"$user_snmp_home"/snmp.conf
+mkdir -p "$HOME"/.snmp/mibs && cd "$HOME"/.snmp/mibs
+echo "mibdirs +""$HOME"/.snmp"/Source" >> "$HOME"/.snmp/snmp.conf
  
-git init && git pull https://github.com/williamblair333/mibs.git && cd Source
-download-mibs
+#bli-git ip is: 10.120.25.72
+git init && git pull http://10.120.25.72/cgit.cgi/alpha/mibs.git && cd Source
+sudo download-mibs
