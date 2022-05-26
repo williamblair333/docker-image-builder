@@ -31,6 +31,5 @@ sed -i 's/mibs :/#mibs :/g' /etc/snmp/snmp.conf
 mkdir -p /"$user_snmp_home"/mibs && cd /"$user_snmp_home"/mibs
 echo "mibdirs +"/"$user_snmp_home""/Source" >> /"$user_snmp_home"/snmp.conf
  
-#bli-git ip is: 10.120.25.72
-git init && git pull http://10.120.25.72/cgit.cgi/alpha/mibs.git && cd Source
+git init && git pull https://github.com/williamblair333/mibs.git && cd Source
 download-mibs
