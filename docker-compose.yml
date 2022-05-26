@@ -4,6 +4,7 @@ services:
     bullseye-test:
         restart: always
         image: localhost:5000/bs_test:latest
+        user: root
         container_name: bs_test
         
         volumes:
@@ -16,7 +17,6 @@ services:
 
 
 volumes:
-    # SSH host key storage for gitolite
     data:
 
             
